@@ -1,0 +1,76 @@
+!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Quieres celebrar Halloween conmigo?</title>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: #ff6600;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            padding-top: 20vh;
+            overflow: hidden;
+        }
+        h1 { font-size: 2.5rem; }
+        .botones {
+            margin-top: 30px;
+            position: relative;
+            height: 100px;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        #btnSi {
+            background-color: #ff6600;
+            color: white;
+        }
+        #btnNo {
+            background-color: #444;
+            color: #bbb;
+            position: absolute;
+            transition: all 0.1s ease;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🎃 ¿Quieres celebrar Halloween conmigo? 🎃</h1>
+    
+    <div class="botones">
+        <!-- El link de tu video de YouTube ya está colocado aquí -->
+        <a href="https://youtu.be/E3x7o0c5tJc?si=eEDdMsW1EW96jZ0F" id="linkSi">
+            <button id="btnSi">🎃 Sí</button>
+        </a>
+        <button id="btnNo" style="left: 55%; top: 0px;">🕸️ No</button>
+    </div>
+
+    <script>
+        const btnNo = document.getElementById('btnNo');
+
+        function moverBoton() {
+            // Calcula una posición aleatoria restando márgenes para que no se salga de la pantalla
+            const x = Math.random() * (window.innerWidth - btnNo.offsetWidth - 20);
+            const y = Math.random() * (window.innerHeight - btnNo.offsetHeight - 20);
+            
+            btnNo.style.position = 'fixed';
+            btnNo.style.left = `${x}px`;
+            btnNo.style.top = `${y}px`;
+        }
+
+        // Detecta mouse en PC y toques en celulares
+        btnNo.addEventListener('mouseenter', moverBoton);
+        btnNo.addEventListener('touchstart', function(e) {
+            e.preventDefault(); // Evita que el celular haga clic accidentalmente al tocarlo
+            moverBoton();
+        });
+    </script>
+
+</body>
+</html>
